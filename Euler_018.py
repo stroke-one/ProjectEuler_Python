@@ -24,5 +24,57 @@ for line in triangle.split("\n"):
     array[row] = [int(i) for i in line.split(" ")]
     row += 1
 
+max_vals_a = {0: [array[0][0]]}
+
+for row_index in range(1, len(array)):
+    max_vals_b = {n:[] for n in range(len(array[row_index]))}
+    for column_index in range(0, len(max_vals_a)):
+        for val in max_vals_a[column_index]:
+            max_vals_b[column_index].append(val + array[row_index][column_index])
+            max_vals_b[column_index + 1].append(val + array[row_index][column_index + 1])
+    max_vals_a = max_vals_b
+
+max_all = 0
+for k in max_vals_a:
+    for n in max_vals_a[k]:
+        if n > max_all:
+            max_all = n
+print(max_all)
 
 print(time.time() - t)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
